@@ -32,12 +32,23 @@ jobs:
       - name: Build Project
         run: npm run build
 
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
       # 6. Log in to Docker Hub
       - name: Log in to Docker Hub
         uses: docker/login-action@v2
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Cache Docker layers
+        uses: actions/cache@v3
+        with:
+          path: /tmp/.buildx-cache
+          key: ${{ runner.os }}-buildx-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-buildx-
 
       # 7. Build and Push Docker Image
       - name: Build and Push Docker Image
@@ -46,6 +57,7 @@ jobs:
           context: .
           push: true
           tags: wintersalmon/home-page:${{ github.sha }}
+          platforms: linux/arm64,linux/amd64
 
   deploy:
     runs-on: self-hosted
