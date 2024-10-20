@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  build-and-deploy:
+  build:
     runs-on: ubuntu-latest
 
     steps:
@@ -46,3 +46,22 @@ jobs:
           context: .
           push: true
           tags: wintersalmon/home-page:${{ github.sha }}
+
+  deploy:
+    runs-on: self-hosted
+    needs: build
+    if: success()
+
+    steps:
+      - name: Set up kubectl
+        uses: azure/setup-kubectl@v3
+        with:
+          version: 'latest'
+
+      - name: Configure kubeconfig
+        run: |
+          echo "${{ secrets.KUBECONFIG }}" | base64 --decode > $HOME/.kube/config
+
+      - name: Deploy to Kubernetes
+        run: |
+          kubectl set image deployment/home-page home-page=wintersalmon/home-page:latest
