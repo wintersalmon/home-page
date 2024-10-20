@@ -45,4 +45,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: wintersalmon/svelte-app:${{ github.sha }}
+          tags: wintersalmon/home-page:${{ github.sha }}
