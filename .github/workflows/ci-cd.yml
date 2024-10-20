@@ -64,4 +64,4 @@ jobs:
 
       - name: Deploy to Kubernetes
         run: |
-          kubectl set image deployment/home-page home-page=wintersalmon/home-page:latest
+          kubectl set image deployment/home-page -n myapps home-page=wintersalmon/home-page:${{ github.sha }}
