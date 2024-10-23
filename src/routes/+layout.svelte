@@ -11,7 +11,9 @@
 	</main>
 
 	<footer>
-		<p>visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to learn SvelteKit</p>
+		<p>
+			visit <a href="https://github.com/wintersalmon/">wintersalmon | github</a> to learn more
+		</p>
 	</footer>
 </div>
 
