@@ -1,0 +1,38 @@
+Codemap Diff Report
+===================
+Generated: 2026-01-30
+
+Status: NEW CODEMAPS CREATED
+
+Previous Version: None (first generation)
+Current Version: 2026-01-30
+
+Files Created:
+  + codemaps/architecture.md  (1.2 KB)
+  + codemaps/frontend.md      (1.5 KB)
+  + codemaps/data.md          (1.4 KB)
+
+Coverage Summary:
+-----------------
+Routes Documented:
+  [x] / (Home)
+  [x] /about
+  [x] /sverdle
+  [x] /sverdle/how-to-play
+
+Components Documented:
+  [x] Header.svelte
+  [x] Counter.svelte
+  [x] +layout.svelte
+
+Data Models Documented:
+  [x] Game class (Sverdle)
+  [x] reduced_motion store
+
+Configuration Documented:
+  [x] svelte.config.js
+  [x] tailwind.config.js
+  [x] package.json dependencies
+
+Change Percentage: N/A (new creation)
+User Approval Required: No (under 30% threshold)
